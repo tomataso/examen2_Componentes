@@ -35,48 +35,48 @@ public class WorkshopController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/insertar",  method = RequestMethod.GET)
+	@RequestMapping(value = "/insertarWorkshop",  method = RequestMethod.GET)
 	public String insertarPage(Model model) {
 		model.addAttribute(new Workshop());
-		return "insertar";
+		return "insertarWorkshop";
 	}	
 	
-	@RequestMapping(value = "/insertar",  method = RequestMethod.POST)
+	@RequestMapping(value = "/insertarWorkshop",  method = RequestMethod.POST)
 	public String insertarAction(Workshop workshop, BindingResult result, Model model) {
 		workshopService.save(workshop);
 		return "index";
 	}
 	
-	@RequestMapping("/listar")
+	@RequestMapping("/listarWorkshop")
 	public String listar(Model model) {
 		model.addAttribute("workshops",workshopService.getAll());
-		return "listar";
+		return "listarWorkshop";
 	}
 	
 	
 	
-	@GetMapping("/editar/{id}")
+	@GetMapping("/editarWorkshop/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
 		Optional<Workshop> workshop = workshopService.get(id);
 
 		if (workshop.isPresent()) {
 			model.addAttribute("workshop", workshop);
-			return "editar";
+			return "editarWorkshop";
 		}
 			return "index";
 	}
 	
-	@PostMapping("/editar/{id}")
+	@PostMapping("/editarWorkshop/{id}")
 	public String updateAntology(@PathVariable("id") long id, Workshop workshop, BindingResult result, Model model) {
 		
 			
 			if(result.hasErrors()) {
 				workshop.setId(id);
-				return "editar/{id}";
+				return "editarWorkshop/{id}";
 			}
 			workshopService.save(workshop);
 			model.addAttribute("workshops", workshopService.getAll());
-			return "listar";
+			return "listarWorkshop";
 			
 		}
 		
@@ -107,7 +107,7 @@ public class WorkshopController {
 		}
 
 		
-		@RequestMapping(value="/detalle/{id}")
+		@RequestMapping(value="/detalleWorkshop/{id}")
 		public String saveEdition(Model model, @PathVariable long id) {
 			Optional<Workshop> possibleData = workshopService.get(id);
 			if (possibleData.isPresent()) {

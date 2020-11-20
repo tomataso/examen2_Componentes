@@ -2,12 +2,16 @@
 <head>
 </head>
 <body>
-	Nombre del Workshop:<span th:text="${workshopData.name}">Titulo</span><br/>
+	Nombre del Workshop: <span th:text="${workshopData.name}">Titulo</span><br/>
 	Autor:<span th:text="${workshopData.autor}">Titulo</span><br/>
     Tareas:
     <div th:each="entry : ${workshopData.tareas}">
     	<ul>
-    		<li><span th:text="${entry.name}">Name</span></li>
+    		<li>Nombre: <span th:text="${entry.name}">Nombre</span></li>
+    		<li>Descripcion: <span th:text="${entry.descripcion}">Descripcion: </span></li>
+    		<li>Texto Leido: <span th:text="${entry.textoLeido}">Texto leido/mostrado a los participantes: </span></li>
+    		<li>Tiempo (Minutos): <span th:text="${entry.tiempo}">Tiempo (Minutos): </span></li>
+    	
     	</ul>
     </div>
     <a th:href="@{/agregarTarea/{id}(id=${workshopData.id})}">Agregar Tarea</a>

@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8"></meta>
+
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Creacion de Workshops</title>
+<title>Editar Workshop</title>
 </head>
 <body>
-Crear workshop:
 
-<form action="#" th:action="@{/insertar}" th:object="${workshop}" method="post">
-    <label for="name">Nombre: </label>
+
+<form action="#" th:action="@{/editarWorkshop/{id}(id=${id})}" th:object="${workshop}" method="post">
+ <label for="name">Nombre: </label>
     	<input type="text" th:field="*{name}" id="name">
     
     
@@ -37,12 +38,8 @@ Crear workshop:
     	<input type="text" th:field="*{pClaveTRES}" id="pClaveTRES">
     
     
-     <input type="submit" value="Add Workshop">   
+     <input type="submit" value="Update Workshop">   
 </form>
-
-
-
-
 
 
 

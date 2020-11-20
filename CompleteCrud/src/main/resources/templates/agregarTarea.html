@@ -8,8 +8,24 @@
 <body>
 Insertar tarea para la Workshop #: <span th:text="${workshop.id}">Id</span>
 <form action="#" th:action="@{/agregarTarea/{id}(id=${workshop.id})}" th:object="${tarea}" method="post">
-    <label for="name">Name</label>
+    
+    
+    <label for="name">Nombre: </label>
     <input type="text" th:field="*{name}" id="name">
+    
+        <label for="descripcion">Descripcion: </label>
+    <input type="text" th:field="*{descripcion}" id="descripcion">
+    
+        <label for="textoLeido">Texto leido: </label>
+    <input type="text" th:field="*{textoLeido}" id="textoLeido">
+    
+        <label for="tiempo">Tiempo (Minutos): </label>
+    <input type="text" th:field="*{tiempo}" id="tiempo">
+    
+    
+    
+    
+    
      <input type="submit" value="Add Tarea">   
 </form>
 

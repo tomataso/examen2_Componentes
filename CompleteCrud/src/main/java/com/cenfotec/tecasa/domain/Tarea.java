@@ -19,6 +19,13 @@ public class Tarea {
 	@ManyToOne
     @JoinColumn(name="cart_id", nullable=false)
 	private Workshop workshop;
+	
+	private String descripcion;
+	
+	private String textoLeido;
+	
+	private String tiempo;
+	
 
 	public long getId() {
 		return id;
@@ -42,6 +49,30 @@ public class Tarea {
 
 	public void setWorkshop(Workshop workshop) {
 		this.workshop = workshop;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getTextoLeido() {
+		return textoLeido;
+	}
+
+	public void setTextoLeido(String textoLeido) {
+		this.textoLeido = textoLeido;
+	}
+
+	public String getTiempo() {
+		return tiempo;
+	}
+
+	public void setTiempo(String tiempo) {
+		this.tiempo = tiempo;
 	}
 	
 	
