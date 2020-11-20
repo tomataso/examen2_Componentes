@@ -82,7 +82,7 @@ public class WorkshopController {
 		
 	
 
-		@RequestMapping(value = "/agregarArticulo/{id}")
+		@RequestMapping(value = "/agregarTarea/{id}")
 		public String recoverForAddArticle(Model model, @PathVariable long id) {
 			Optional<Workshop> workshop = workshopService.get(id);
 			Tarea newTarea = new Tarea();
@@ -90,12 +90,12 @@ public class WorkshopController {
 				newTarea.setWorkshop(workshop.get());
 				model.addAttribute("workshop", workshop.get());
 				model.addAttribute("tarea", newTarea);
-				return "agregarArticulo";
+				return "agregarTarea";
 			}
 			return "noEncontrada";
 		}
 
-		@RequestMapping(value = "/agregarArticulo/{id}", method = RequestMethod.POST)
+		@RequestMapping(value = "/agregarTarea/{id}", method = RequestMethod.POST)
 		public String saveArticle(Tarea tarea, Model model, @PathVariable long id) {
 			Optional<Workshop> workshop = workshopService.get(id);
 			if (workshop.isPresent()) {
