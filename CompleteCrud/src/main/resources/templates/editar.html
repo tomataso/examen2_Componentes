@@ -4,12 +4,12 @@
 <meta charset="utf-8"></meta>
 
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Editar Antología</title>
+<title>Editar Workshop</title>
 </head>
 <body>
 
 
-<form action="#" th:action="@{/editar/{id}(id=${id})}" th:object="${antology}" method="post">
+<form action="#" th:action="@{/editar/{id}(id=${id})}" th:object="${workshop}" method="post">
     <label for="name">Name: </label>
     <input type="text" th:field="*{name}" id="name">
     
@@ -20,7 +20,7 @@
     <input type="date" th:field="*{fecha}" id="fecha">
     
     
-     <input type="submit" value="Update Anthology">   
+     <input type="submit" value="Update Workshop">   
 </form>
 
 

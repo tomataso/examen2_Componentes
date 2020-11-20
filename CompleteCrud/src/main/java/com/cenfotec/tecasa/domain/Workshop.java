@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Antology {
+public class Workshop {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,8 +21,8 @@ public class Antology {
 	
 	private String name;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="anthology")
-	private Set<Article> articles;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="workshop")
+	private Set<Tarea> articles;
 	
 	private String texto;
 	
@@ -44,12 +44,12 @@ public class Antology {
 		this.name = name;
 	}
 
-	public Set<Article> getArticles() {
+	public Set<Tarea> getTareas() {
 		return articles;
 	}
 
-	public void setArticles(Set<Article> articles) {
-		this.articles = articles;
+	public void setTareas(Set<Tarea> tareas) {
+		this.articles = tareas;
 	}
 
 	public String getTexto() {

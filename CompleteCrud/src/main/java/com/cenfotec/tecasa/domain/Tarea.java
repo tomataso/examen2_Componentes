@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Article {
+public class Tarea {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class Article {
 	
 	@ManyToOne
     @JoinColumn(name="cart_id", nullable=false)
-	private Antology anthology;
+	private Workshop workshop;
 
 	public long getId() {
 		return id;
@@ -36,12 +36,12 @@ public class Article {
 		this.name = name;
 	}
 
-	public Antology getAnthology() {
-		return anthology;
+	public Workshop getWorkshop() {
+		return workshop;
 	}
 
-	public void setAnthology(Antology anthology) {
-		this.anthology = anthology;
+	public void setWorkshop(Workshop workshop) {
+		this.workshop = workshop;
 	}
 	
 	

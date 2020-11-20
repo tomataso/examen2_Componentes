@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Anthologies</title>
+<title>Workshops</title>
 </head>
 <body>
-Insertar articulo para la Antologia #: <span th:text="${antology.id}">Id</span>
-<form action="#" th:action="@{/agregarArticulo/{id}(id=${antology.id})}" th:object="${article}" method="post">
+Insertar tarea para la Workshop #: <span th:text="${workshop.id}">Id</span>
+<form action="#" th:action="@{/agregarArticulo/{id}(id=${workshop.id})}" th:object="${tarea}" method="post">
     <label for="name">Name</label>
     <input type="text" th:field="*{name}" id="name">
-     <input type="submit" value="Add Article">   
+     <input type="submit" value="Add Tarea">   
 </form>
 
 </body>

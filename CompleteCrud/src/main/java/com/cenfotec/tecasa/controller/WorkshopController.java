@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Optional;
 import org.springframework.validation.BindingResult;
 
-import com.cenfotec.tecasa.domain.Antology;
-import com.cenfotec.tecasa.domain.Article;
-import com.cenfotec.tecasa.service.AntologyService;
-import com.cenfotec.tecasa.service.ArticleService;
+import com.cenfotec.tecasa.domain.Workshop;
+import com.cenfotec.tecasa.domain.Tarea;
+import com.cenfotec.tecasa.service.WorkshopService;
+import com.cenfotec.tecasa.service.TareaService;
 
 
 
 @Controller
-public class AntologyController {
+public class WorkshopController {
 
 	@Autowired
-	AntologyService anthologyService;
+	WorkshopService workshopService;
 	
 	@Autowired
-	ArticleService articleService; 
+	TareaService tareaService; 
 	
 	@RequestMapping("/")
 	public String home(Model model) {
@@ -37,19 +37,19 @@ public class AntologyController {
 	
 	@RequestMapping(value = "/insertar",  method = RequestMethod.GET)
 	public String insertarPage(Model model) {
-		model.addAttribute(new Antology());
+		model.addAttribute(new Workshop());
 		return "insertar";
 	}	
 	
 	@RequestMapping(value = "/insertar",  method = RequestMethod.POST)
-	public String insertarAction(Antology antology, BindingResult result, Model model) {
-		anthologyService.save(antology);
+	public String insertarAction(Workshop workshop, BindingResult result, Model model) {
+		workshopService.save(workshop);
 		return "index";
 	}
 	
 	@RequestMapping("/listar")
 	public String listar(Model model) {
-		model.addAttribute("anthologies",anthologyService.getAll());
+		model.addAttribute("workshops",workshopService.getAll());
 		return "listar";
 	}
 	
@@ -57,25 +57,25 @@ public class AntologyController {
 	
 	@GetMapping("/editar/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
-		Optional<Antology> antology = anthologyService.get(id);
+		Optional<Workshop> workshop = workshopService.get(id);
 
-		if (antology.isPresent()) {
-			model.addAttribute("antology", antology);
+		if (workshop.isPresent()) {
+			model.addAttribute("workshop", workshop);
 			return "editar";
 		}
 			return "index";
 	}
 	
 	@PostMapping("/editar/{id}")
-	public String updateAntology(@PathVariable("id") long id, Antology antology, BindingResult result, Model model) {
+	public String updateAntology(@PathVariable("id") long id, Workshop workshop, BindingResult result, Model model) {
 		
 			
 			if(result.hasErrors()) {
-				antology.setId(id);
+				workshop.setId(id);
 				return "editar/{id}";
 			}
-			anthologyService.save(antology);
-			model.addAttribute("anthologies", anthologyService.getAll());
+			workshopService.save(workshop);
+			model.addAttribute("workshops", workshopService.getAll());
 			return "listar";
 			
 		}
@@ -84,23 +84,23 @@ public class AntologyController {
 
 		@RequestMapping(value = "/agregarArticulo/{id}")
 		public String recoverForAddArticle(Model model, @PathVariable long id) {
-			Optional<Antology> antology = anthologyService.get(id);
-			Article newArticle = new Article();
-			if (antology.isPresent()) {
-				newArticle.setAnthology(antology.get());
-				model.addAttribute("antology", antology.get());
-				model.addAttribute("article", newArticle);
+			Optional<Workshop> workshop = workshopService.get(id);
+			Tarea newTarea = new Tarea();
+			if (workshop.isPresent()) {
+				newTarea.setWorkshop(workshop.get());
+				model.addAttribute("workshop", workshop.get());
+				model.addAttribute("tarea", newTarea);
 				return "agregarArticulo";
 			}
 			return "noEncontrada";
 		}
 
 		@RequestMapping(value = "/agregarArticulo/{id}", method = RequestMethod.POST)
-		public String saveArticle(Article article, Model model, @PathVariable long id) {
-			Optional<Antology> antology = anthologyService.get(id);
-			if (antology.isPresent()) {
-				article.setAnthology(antology.get());
-				articleService.save(article);
+		public String saveArticle(Tarea tarea, Model model, @PathVariable long id) {
+			Optional<Workshop> workshop = workshopService.get(id);
+			if (workshop.isPresent()) {
+				tarea.setWorkshop(workshop.get());
+				tareaService.save(tarea);
 				return "index";
 			}
 			return "errorArticle";
@@ -109,9 +109,9 @@ public class AntologyController {
 		
 		@RequestMapping(value="/detalle/{id}")
 		public String saveEdition(Model model, @PathVariable long id) {
-			Optional<Antology> possibleData = anthologyService.get(id);
+			Optional<Workshop> possibleData = workshopService.get(id);
 			if (possibleData.isPresent()) {
-				model.addAttribute("antologyData",possibleData.get());
+				model.addAttribute("workshopData",possibleData.get());
 				return "detalle";	
 			}
 			return "noEncontrada";

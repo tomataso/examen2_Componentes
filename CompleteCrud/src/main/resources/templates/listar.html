@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Anthologies</title>
+<title>Workshops</title>
 </head>
 <body>
 	<div>
 		<h1>List of Anthologies</h1>
 		<ul>
-			<div th:each="entry : ${anthologies}">
+			<div th:each="entry : ${workshops}">
 				<li>
 					<h4>
 						<span th:text="${entry.name}">Name</span>
@@ -17,7 +17,7 @@
 						<span th:text="${entry.fecha}">Fecha:</span>
 				
 						<td><a th:href="@{/editar/{id}(id=${entry.id})}">Update </a></td>
-						<a th:href="@{/detalle/{id}(id=${entry.id})}"> Articulos</a><br/>
+						<a th:href="@{/detalle/{id}(id=${entry.id})}"> Tareas</a><br/>
 						
 					</h4>
 				</li>
