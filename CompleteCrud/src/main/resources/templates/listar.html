@@ -12,9 +12,16 @@
 			<div th:each="entry : ${workshops}">
 				<li>
 					<h4>
-						<span th:text="${entry.name}">Name</span>
-						<span th:text="${entry.texto}">Texto:</span>
-						<span th:text="${entry.fecha}">Fecha:</span>
+						<span th:text="${entry.name}">Nombre: </span>
+						<span th:text="${entry.autor}"> Autor: </span>
+						<span th:text="${entry.objetivo}">Objetivo del Taller:</span>
+						<span th:text="${entry.categoria}">Categoria: </span>
+						<span th:text="${entry.duracion}"> Duración:</span>
+						<span th:text="${entry.pClaveUNO}">Keyword #1:</span>
+						<span th:text="${entry.pClaveDOS}">Keyword #2:</span>
+						<span th:text="${entry.pClaveTRES}">Keyword #3:
+						
+						</span>
 				
 						<td><a th:href="@{/editar/{id}(id=${entry.id})}">Update </a></td>
 						<a th:href="@{/detalle/{id}(id=${entry.id})}"> Tareas</a><br/>

@@ -10,14 +10,32 @@
 
 
 <form action="#" th:action="@{/editar/{id}(id=${id})}" th:object="${workshop}" method="post">
-    <label for="name">Name: </label>
-    <input type="text" th:field="*{name}" id="name">
+ <label for="name">Nombre: </label>
+    	<input type="text" th:field="*{name}" id="name">
     
-      <label for="texto">Texto: </label>
-    <input type="text" th:field="*{texto}" id="texto">
     
-     <label for="name">Fecha: </label>
-    <input type="date" th:field="*{fecha}" id="fecha">
+    <label for="autores">Autor:</label>
+<select name="autor" type="text" th:field="*{autor}" id="autor"  >
+  <option  value="Robert Cecil Martin">Robert Cecil Martin</option>
+  <option value="Kakashi Hatake">Kakashi Hatake</option>
+  <option value="Linus Torvalds">Linus Torvalds</option>
+  <option value="Billie Trabajos">Billie Trabajos</option>
+</select>
+    
+      <label for="objetivo">Objetivo del Taller: </label>
+   		 <input type="text" th:field="*{objetivo}" id="objetivo">
+    
+     <label for="categoria">Categoria: </label>
+    	<input type="text" th:field="*{categoria}" id="categoria">
+    
+     <label for="pClaveUNO">Keyword 1: </label>
+   		 <input type="text" th:field="*{pClaveUNO}" id="pClaveUNO">
+   		 
+   		      <label for="pClaveDOS">Keyword 2: </label>
+    	<input type="text" th:field="*{pClaveDOS}" id="pClaveDOS">
+    	
+    	     <label for="pClaveTRES">Keyword 3: </label>
+    	<input type="text" th:field="*{pClaveTRES}" id="pClaveTRES">
     
     
      <input type="submit" value="Update Workshop">   

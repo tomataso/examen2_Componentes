@@ -2,8 +2,8 @@
 <head>
 </head>
 <body>
-	Nombre:<span th:text="${workshopData.name}">Titulo</span><br/>
-	Subtitulo:<span th:text="${workshopData.texto}">Titulo</span><br/>
+	Nombre del Workshop:<span th:text="${workshopData.name}">Titulo</span><br/>
+	Autor:<span th:text="${workshopData.autor}">Titulo</span><br/>
     Tareas:
     <div th:each="entry : ${workshopData.tareas}">
     	<ul>
