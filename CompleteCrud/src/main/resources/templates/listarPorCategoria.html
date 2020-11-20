@@ -7,15 +7,16 @@
 </head>
 <body>
 	<div>
-		<h1>Lista de Workshops</h1>
+		<h1>Lista de Workshops por Categoria</h1>
 		<ul>
-			<div th:each="entry : ${#workshops.sort(categoria)}">
+			<div th:each="entry : ${workshops}">
 				<li>
 					<h4>
-						<b>Taller: </b> <span th:text="${entry.name}">Nombre: </span>
+					
+						<b>Categoria: </b> <span th:text="${entry.categoria}">Nombre: </span>
+						<b> , </b> <span th:text="${entry.name}">Nombre: </span>
 						<b> , </b> <span th:text="${entry.autor}"> Autor: </span>
-						<b> , </b> <span th:text="${entry.objetivo}">Objetivo del Taller:</span>
-						<b> , </b> <span th:text="${entry.categoria}">Categoria: </span>
+						<b> , </b> <span th:text="${entry.objetivo}">Objetivo del Taller:</span>			
 						<b> , </b> <span th:text="${entry.duracion}"> Duración:</span>
 						<b> , </b> <span th:text="${entry.pClaveUNO}">Keyword #1:</span>
 						<b> , </b> <span th:text="${entry.pClaveDOS}">Keyword #2:</span>

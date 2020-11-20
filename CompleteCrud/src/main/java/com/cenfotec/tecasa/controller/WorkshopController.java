@@ -125,6 +125,14 @@ public class WorkshopController {
 		
 		}
 		*/
+		
+		@RequestMapping("/listarPorCategoria")
+		public String listarPorCategoria(Model model) {
+			model.addAttribute("workshops",workshopService.getAll());
+			return "listarPorCategoria";
+		}
+		
+		
 	}
 	
 	
