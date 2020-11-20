@@ -91,6 +91,9 @@ public class WorkshopController {
 				model.addAttribute("workshop", workshop.get());
 				model.addAttribute("tarea", newTarea);
 				return "agregarTarea";
+				
+				
+				
 			}
 			return "noEncontrada";
 		}
@@ -101,6 +104,14 @@ public class WorkshopController {
 			if (workshop.isPresent()) {
 				tarea.setWorkshop(workshop.get());
 				tareaService.save(tarea);
+				
+				// Aca se suma el tiempo para agregar en el general.
+				int tareaTempo = Integer.parseInt(tarea.getTiempo());
+				int workshopTempo = Integer.parseInt(workshop.get().getDuracion());
+				int nuevoTempo = workshopTempo + tareaTempo;
+				
+				workshop.get().setDuracion(Integer.toString(nuevoTempo));
+				
 				return "index";
 			}
 			return "errorArticle";
