@@ -112,7 +112,7 @@ public class WorkshopController {
 			Optional<Workshop> possibleData = workshopService.get(id);
 			if (possibleData.isPresent()) {
 				model.addAttribute("workshopData",possibleData.get());
-				return "detalle";	
+				return "detalleWorkshop";	
 			}
 			return "noEncontrada";
 		}
