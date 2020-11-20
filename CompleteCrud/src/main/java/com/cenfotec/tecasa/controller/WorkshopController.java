@@ -111,6 +111,7 @@ public class WorkshopController {
 				int nuevoTempo = workshopTempo + tareaTempo;
 				
 				workshop.get().setDuracion(Integer.toString(nuevoTempo));
+				workshopService.save(workshop.get());
 				
 				return "index";
 			}
