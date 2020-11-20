@@ -117,7 +117,14 @@ public class WorkshopController {
 			return "noEncontrada";
 		}
 		
+		/*
+		@RequestMapping("/listarPorCategoria")
+		public String listarPorCategoria(Model model) {
+			model.addAttribute("workshops",workshopService.getAll());
+			return "listarWorkshop";
 		
+		}
+		*/
 	}
 	
 	
