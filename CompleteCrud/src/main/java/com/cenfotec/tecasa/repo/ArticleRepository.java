@@ -1,8 +1,8 @@
-package com.cenfotec.crud.repo;
+package com.cenfotec.tecasa.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cenfotec.crud.domain.Article;
+import com.cenfotec.tecasa.domain.Article;
 
 public interface ArticleRepository extends JpaRepository<Article,Long>{
 

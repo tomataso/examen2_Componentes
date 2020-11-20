@@ -1,4 +1,4 @@
-package com.cenfotec.crud.service;
+package com.cenfotec.tecasa.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,8 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cenfotec.crud.domain.Antology;
-import com.cenfotec.crud.repo.AntologyRepository;
+import com.cenfotec.tecasa.domain.Antology;
+import com.cenfotec.tecasa.repo.AntologyRepository;
 
 @Service
 public class AntologyServiceImpl implements AntologyService {

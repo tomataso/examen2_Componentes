@@ -1,9 +1,9 @@
-package com.cenfotec.crud.service;
+package com.cenfotec.tecasa.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.cenfotec.crud.domain.Antology;
+import com.cenfotec.tecasa.domain.Antology;
 
 public interface AntologyService {
 

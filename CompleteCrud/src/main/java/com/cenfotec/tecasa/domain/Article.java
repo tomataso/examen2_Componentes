@@ -1,4 +1,4 @@
-package com.cenfotec.crud.domain;
+package com.cenfotec.tecasa.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

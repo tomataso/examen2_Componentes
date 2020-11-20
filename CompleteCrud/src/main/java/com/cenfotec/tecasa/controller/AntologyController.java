@@ -1,4 +1,4 @@
-package com.cenfotec.crud.controller;
+package com.cenfotec.tecasa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.cenfotec.crud.domain.Antology;
-import com.cenfotec.crud.service.AntologyService;
-
-
 import java.util.Optional;
 import org.springframework.validation.BindingResult;
-import com.cenfotec.crud.domain.Article;
-import com.cenfotec.crud.service.ArticleService;
+
+import com.cenfotec.tecasa.domain.Antology;
+import com.cenfotec.tecasa.domain.Article;
+import com.cenfotec.tecasa.service.AntologyService;
+import com.cenfotec.tecasa.service.ArticleService;
 
 
 
