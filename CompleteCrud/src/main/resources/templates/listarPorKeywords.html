@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Lista Por Keywords</title>
+</head>
+<body>
+	<div>
+		<h1>Lista de Workshops por Keywords</h1>
+		<ul>
+			<div th:each="entry : ${workshops}">
+				<li>
+					<h4>
+					
+						<b>Keywords: </b> <span th:text="${entry.pClaveUNO}"> </span>
+						<b>  </b> <span th:text="${entry.pClaveDOS}"></span>
+						<b>  </b><span th:text="${entry.pClaveTRES}"> </span>
+						<b> / Nombre:  </b> <span th:text="${entry.name}"> </span>
+						<b> , Autor: </b> <span th:text="${entry.autor}">  </span>
+						<b> , Objetivo: </b> <span th:text="${entry.objetivo}"></span>			
+						<b> , Duracion: </b> <span th:text="${entry.duracion}"> </span>
+						<b> , Categoria: </b> <span th:text="${entry.categoria}"></span>
+						
+						<b> .  </b>
+						
+				
+						<td><a th:href="@{/editarWorkshop/{id}(id=${entry.id})}"> Update </a></td>
+						<a th:href="@{/detalleWorkshop/{id}(id=${entry.id})}">/ Tareas</a><br/>
+						
+					</h4>
+				</li>
+			</div>
+		</ul>
+	</div>
+</body>
+</html>

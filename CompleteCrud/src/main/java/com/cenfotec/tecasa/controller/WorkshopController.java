@@ -155,7 +155,17 @@ public class WorkshopController {
 		}
 		
 		
+		@RequestMapping("/listarPorAutor")
+		public String listarPorAutor(Model model) {
+			model.addAttribute("workshops",workshopService.getAll());
+			return "listarPorAutor";
+		}
 		
+		@RequestMapping("/listarPorKeywords")
+		public String listarPorKeywords(Model model) {
+			model.addAttribute("workshops",workshopService.getAll());
+			return "listarPorKeywords";
+		}
 		
 
 		
