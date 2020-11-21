@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Categorias Registradas</title>
+</head>
+<body>
+	<div>
+		<h1>Lista de Categorias</h1>
+		<ul>
+			<div th:each="entry : ${categorias}">
+				<li>
+					<h4>
+						<b>Nombre de Categoria: </b> <span th:text="${entry.name}">Nombre: </span>
+
+						<b> .  </b>
+						
+				
+						<td><a th:href="@{/editarCategoria/{id}(id=${entry.id})}"> Update Categoria  </a></td>
+						<br/>
+						
+					</h4>
+				</li>
+			</div>
+		</ul>
+	</div>
+</body>
+</html>
