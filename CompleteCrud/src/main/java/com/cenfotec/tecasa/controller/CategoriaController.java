@@ -15,86 +15,63 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.cenfotec.tecasa.domain.Categoria;
 import com.cenfotec.tecasa.service.CategoriaService;
 
-
-
-
 @Controller
-public class CategoriaController {	
+public class CategoriaController {
+
 	
 	@Autowired
 	CategoriaService categoriaservice;
+
 	
 	
-	
-/*
-	
-	@RequestMapping("/")
-	public String home(Model model) {
-		return "index";
-	}
-	*/
-	
-	@RequestMapping(value = "/insertarCategoria",  method = RequestMethod.GET)
-	public String insertarCategoria(Model model) {
+	@RequestMapping(value = "/insertarCategoria", method = RequestMethod.GET)
+	public String insertarPage(Model model) {
 		model.addAttribute(new Categoria());
 		return "insertarCategoria";
-	}	
-	
-	@RequestMapping(value = "/insertarCategoria",  method = RequestMethod.POST)
-	public String insertarCategoria(Categoria categoria, BindingResult result, Model model) {
+	}
+
+	@RequestMapping(value = "/insertarCategoria", method = RequestMethod.POST)
+	public String insertarAction(Categoria categoria, BindingResult result, Model model) {
 		categoriaservice.save(categoria);
+		System.out.println("Aca va esta categoria al save" + categoria.getName());
 		return "index";
 	}
-	
+
 	@RequestMapping("/listarCategoria")
-	public String listarCategoria(Model model) {
-		model.addAttribute("categorias}",categoriaservice.getAll());
+	public String listar(Model model) {
+		model.addAttribute("categorias", categoriaservice.getAll());
+		
+		System.out.println("Aca va el arreglo del listado" + categoriaservice.getAll().get(0).getName());
+		
+		
 		return "listarCategoria";
 	}
-	
-	
-	
+
 	@GetMapping("/editarCategoria/{id}")
-	public String showUpdateCategoria(@PathVariable("id") long id, Model model) {
+	public String showUpdateForm(@PathVariable("id") long id, Model model) {
 		Optional<Categoria> categoria = categoriaservice.get(id);
 
 		if (categoria.isPresent()) {
 			model.addAttribute("categoria", categoria);
-			
+
 			return "editarCategoria";
 		}
-			return "index";
+		return "index";
 	}
-	
-	@PostMapping("/editarCategoria/{id}")
-	public String updateCategoria(@PathVariable("id") long id, Categoria categoria, BindingResult result, Model model) {
-		
-		
-			
-			if(result.hasErrors()) {
-				
-				categoria.setId(id);
-				
-				
-				
-				return "editarCategoria/{id}";
-			}
-			categoriaservice.save(categoria);
-			model.addAttribute("categorias", categoriaservice.getAll());
-			return "listarCategoria";
-			
-		}
-		
-	
-	
-		
-		
-		
-		
 
-		
-		
-		
-		
+	@PostMapping("/editarCategoria/{id}")
+	public String updateAntology(@PathVariable("id") long id, Categoria categoria, BindingResult result, Model model) {
+
+		if (result.hasErrors()) {
+
+			categoria.setId(id);
+
+			return "editarCategoria/{id}";
+		}
+		categoriaservice.save(categoria);
+		model.addAttribute("categorias", categoriaservice.getAll());
+		return "listarCategoria";
+
 	}
-	
+
+}

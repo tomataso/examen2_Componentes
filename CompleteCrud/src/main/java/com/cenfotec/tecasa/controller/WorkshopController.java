@@ -15,8 +15,10 @@ import java.util.Optional;
 import org.springframework.validation.BindingResult;
 
 import com.cenfotec.tecasa.domain.Workshop;
+import com.cenfotec.tecasa.domain.Categoria;
 import com.cenfotec.tecasa.domain.Tarea;
 import com.cenfotec.tecasa.service.WorkshopService;
+import com.cenfotec.tecasa.service.CategoriaService;
 import com.cenfotec.tecasa.service.TareaService;
 
 
@@ -147,6 +149,7 @@ public class WorkshopController {
 		
 		
 		
+
 		
 	}
 	

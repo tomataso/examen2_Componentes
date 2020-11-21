@@ -3,21 +3,20 @@
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="Content-Type" content="text/html"></meta>
-<title>Categorias Registradas</title>
+<title>Categoria</title>
 </head>
 <body>
 	<div>
-		<h1>Lista de Categorias</h1>
+		<h1>Lista de Categoria</h1>
 		<ul>
 			<div th:each="entry : ${categorias}">
 				<li>
 					<h4>
-						<b>Nombre de Categoria: </b> <span th:text="${entry.name}">Nombre: </span>
-
-						<b> .  </b>
+						<b>Categoria: </b> <span th:text="${entry.name}">Nombre: </span>
+						 
 						
 				
-						<td><a th:href="@{/editarCategoria/{id}(id=${entry.id})}"> Update Categoria  </a></td>
+						<td><a th:href="@{/editarWorkshop/{id}(id=${entry.id})}"> Update </a></td>
 						<br/>
 						
 					</h4>
