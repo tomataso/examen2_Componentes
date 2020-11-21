@@ -32,6 +32,9 @@ public class WorkshopController {
 	@Autowired
 	TareaService tareaService; 
 	
+	@Autowired
+	CategoriaService categoriaservice;
+	
 	@RequestMapping("/")
 	public String home(Model model) {
 		return "index";
@@ -40,6 +43,7 @@ public class WorkshopController {
 	@RequestMapping(value = "/insertarWorkshop",  method = RequestMethod.GET)
 	public String insertarPage(Model model) {
 		model.addAttribute(new Workshop());
+		model.addAttribute ("categorias", categoriaservice.getAll());
 		return "insertarWorkshop";
 	}	
 	
@@ -52,6 +56,7 @@ public class WorkshopController {
 	@RequestMapping("/listarWorkshop")
 	public String listar(Model model) {
 		model.addAttribute("workshops",workshopService.getAll());
+		
 		return "listarWorkshop";
 	}
 	
@@ -63,6 +68,8 @@ public class WorkshopController {
 
 		if (workshop.isPresent()) {
 			model.addAttribute("workshop", workshop);
+			// ojo aca
+			model.addAttribute ("categorias", categoriaservice.getAll());
 			return "editarWorkshop";
 		}
 			return "index";
@@ -78,6 +85,7 @@ public class WorkshopController {
 			}
 			workshopService.save(workshop);
 			model.addAttribute("workshops", workshopService.getAll());
+			
 			return "listarWorkshop";
 			
 		}
