@@ -1,5 +1,8 @@
 package com.cenfotec.tecasa.controller;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
@@ -11,7 +14,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.springframework.validation.BindingResult;
 
 import com.cenfotec.tecasa.domain.Workshop;
@@ -25,6 +38,14 @@ import com.cenfotec.tecasa.service.TareaService;
 
 @Controller
 public class WorkshopController {
+
+	public static String logo = "logo-leaf.png";
+	public static String paragraph1 = "poi-word-para1.txt";
+	public static String paragraph2 = "poi-word-para2.txt";
+	public static String paragraph3 = "poi-word-para3.txt";
+	public static String output = "rest-with-spring.docx";
+	
+	XWPFDocument document = new XWPFDocument();
 
 	@Autowired
 	WorkshopService workshopService;
@@ -139,14 +160,6 @@ public class WorkshopController {
 			return "noEncontrada";
 		}
 		
-		/*
-		@RequestMapping("/listarPorCategoria")
-		public String listarPorCategoria(Model model) {
-			model.addAttribute("workshops",workshopService.getAll());
-			return "listarWorkshop";
-		
-		}
-		*/
 		
 		@RequestMapping("/listarPorCategoria")
 		public String listarPorCategoria(Model model) {
@@ -168,8 +181,68 @@ public class WorkshopController {
 		}
 		
 
+		public String convertTextFileToString(String fileName) {
+		    try (Stream<String> stream 
+		      = Files.lines(Paths.get(ClassLoader.getSystemResource(fileName).toURI()))) {
+		        
+		        return stream.collect(Collectors.joining(" "));
+		    } catch (IOException | URISyntaxException e) {
+		        return null;
+		    }
+		}
 		
-	}
+		public void generarWord() throws IOException {
+			FileOutputStream out = new FileOutputStream(output);
+			document.write(out);
+			out.close();
+			document.close();
+		}	
+		
+		@RequestMapping(value="/word/{id}")
+		public String word(Model model, @PathVariable long id) throws IOException {
+			Optional<Workshop> workshop = workshopService.get(id);
+			Optional<Workshop> possibleData = workshopService.get(id);
+		
+
+			
+			if (workshop.isPresent()) {
+				model.addAttribute("workshop", workshop);
+	
+				model.addAttribute("workshopData",possibleData.get());
+				
+				
+				
+				this.modelarWord(workshop, possibleData);
+				this.generarWord();
+
+				return "index";
+			}
+				return "noEncontrada";
+		}
+		
+	
+		public void modelarWord(Optional<Workshop> workshop, 
+				Optional<Workshop> possibleData) {
+
+			
+			XWPFParagraph parrafonum1 = document.createParagraph();
+			XWPFRun runParrafo1 = parrafonum1.createRun();
+			runParrafo1.setText(" Workshop" + possibleData.get().getName());
+			
+			
+			
+			
+			/*for (int i = 0; i < possibleData.get().getTareas().size(); i++) {
+				
+				if(possibleData.get().getId() == ) {
+					
+				}
+				*/
+			
+			}
+		}
+	
+	
 	
 	
 
