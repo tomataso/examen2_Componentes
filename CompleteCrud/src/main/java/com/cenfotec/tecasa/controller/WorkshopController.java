@@ -225,9 +225,9 @@ public class WorkshopController {
 				Optional<Workshop> possibleData) {
 
 			
-			XWPFParagraph parrafonum1 = document.createParagraph();
-			XWPFRun runParrafo1 = parrafonum1.createRun();
-			runParrafo1.setText(" Workshop" + possibleData.get().getName());
+			XWPFParagraph para1 = document.createParagraph();
+			XWPFRun para1Run = para1.createRun();
+			para1Run.setText(" Workshop" + possibleData.get().getName());
 			
 			
 			
